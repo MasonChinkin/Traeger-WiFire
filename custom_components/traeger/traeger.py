@@ -81,8 +81,15 @@ class traeger:
 
                 content_type = response.headers.get("Content-Type", "")
                 if "application/x-amz-json-1.1" in content_type:
+                    # AWS-specific JSON format
                     return json.loads(response_text)
-                return json.loads(response_text)
+                # Standard JSON response
+                try:
+                    return json.loads(response_text)
+                except json.JSONDecodeError:
+                    # If JSON parsing fails, return the text as-is
+                    _LOGGER.warning(f"Failed to parse JSON response from {url}, returning raw text")
+                    return response_text
         except TimeoutError:
             _LOGGER.error(f"Timeout error fetching data from {url}")
             raise
@@ -93,7 +100,9 @@ class traeger:
             )
             raise
         except aiohttp.ClientError as e:
-            _LOGGER.error(f"Client error fetching data from {url}: {e}")
+            # For other client errors (like connection errors before getting response)
+            error_body = response_text if response_text else "No response body available"
+            _LOGGER.error(f"Client error fetching data from {url}: {e}, body={error_body}")
             raise
 
     async def do_cognito(self):
