@@ -150,8 +150,13 @@ ruff check .
 - Support both Fahrenheit and Celsius
 - Minimum grill temperature: 165°F (75°C) - defined by `GRILL_MIN_TEMP_F` / `GRILL_MIN_TEMP_C`
 - Maximum grill temperature: Retrieved from API via `grill_limits.max_grill_temp` (varies by grill model)
-- Probe maximum: 212°F (100°C) for meat probe temperature (hardcoded in `TraegerGrillProbe.max_temp`)
-- Probe presets available for common foods defined in `PROBE_PRESET_MODES` (Chicken: 165°F/74°C, Beef, Pork, Turkey, Fish)
+- Probe maximum: 212°F or 100°C (hardcoded in `TraegerGrillProbe.max_temp` based on temperature unit)
+- Probe presets available in `PROBE_PRESET_MODES` for:
+  - Chicken and Turkey: 165°F (74°C)
+  - Beef: Rare (125°F/52°C), Medium Rare (135°F/57°C), Medium (140°F/60°C), Medium Well (145°F/63°C), Well Done (155°F/68°C), Ground (160°F/71°C)
+  - Lamb: Rare through Well Done with same ranges as beef, plus Ground (160°F/71°C)
+  - Pork: Medium Rare (135°F/57°C), Medium (140°F/60°C), Well Done (155°F/68°C)
+  - Fish: 145°F (63°C)
 - Temperature limits come from the grill's API response (`state.limits`) when available
 - Always respect user's Home Assistant temperature unit preference
 
