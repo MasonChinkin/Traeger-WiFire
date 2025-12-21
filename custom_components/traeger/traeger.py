@@ -22,7 +22,8 @@ from homeassistant.helpers.event import async_track_time_interval
 
 _LOGGER = logging.getLogger(__name__)
 
-CLIENT_ID = "2fuohjtqv1e63dckp5v84rau0j"
+### CLIENT_ID = "2fuohjtqv1e63dckp5v84rau0j"
+CLIENT_ID = "4id473dsrcq4kevlgrikukqn2a"
 TIMEOUT = 60
 API_BASE = "https://1ywgyc65d1.execute-api.us-west-2.amazonaws.com/prod"
 
