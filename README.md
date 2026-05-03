@@ -1,3 +1,13 @@
+> # ⚠️ VIBE-CODED FORK ⚠️
+>
+> **This is a personal fork that exists for one reason: Traeger migrated their cloud API endpoint and the upstream integration still points at the dead one. The fix sits in [johnvoipguy/Traeger-WiFire#13](https://github.com/johnvoipguy/Traeger-WiFire/pull/13) (open since 2026-04-20, unmerged). Rather than wait, this fork applies the patch + bumps the version so HACS picks it up.**
+>
+> **No other changes. No promises of maintenance. Switch back to upstream the moment PR #13 lands.**
+>
+> Patch applied: `API_BASE` → `https://mobile-iot-api.iot.traegergrills.io`, plus the two remaining inline AWS URLs refactored to use it. Version bumped `1.0.1` → `1.0.2`.
+
+---
+
 # HACS Traeger WiFire
 
 Home Assistant Traeger WiFire Integration
